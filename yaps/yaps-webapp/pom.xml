@@ -15,4 +15,11 @@
 
     <name>Yaps Pet Store web application with Vaadin</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
