@@ -14,5 +14,12 @@
     <packaging>jar</packaging>
 
     <name>Yaps Pet Store ejb3 project</name>
-    
+
+    <dependencies>
+        <dependency>
+            <groupId>javaee</groupId>
+            <artifactId>javaee-api</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
