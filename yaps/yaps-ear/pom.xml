@@ -15,6 +15,10 @@
 
     <name>Yaps Pet Store ear project</name>
 
+    <properties>
+        <maven-ear-plugin.version>2.7</maven-ear-plugin.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -29,5 +33,28 @@
             <version>${project.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>${maven-ear-plugin.version}</version>
+                <configuration>
+                    <modules>
+                        <ejbModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>yaps-ejb</artifactId>
+                        </ejbModule>
+                        <webModule>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>yaps-webapp</artifactId>
+                            <contextRoot>/yaps</contextRoot>
+                        </webModule>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
