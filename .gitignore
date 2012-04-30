@@ -7,4 +7,11 @@ target
 /yaps/yaps-ear/.settings/
 /yaps/yaps-ejb/.settings/
 /yaps/yaps-swing/.settings/
-/yaps/yaps-webapp/.settings/
+/yaps/yaps-webapp/.settings//yaps/yaps-ejb/.classpath
+/yaps/yaps-ear/.project
+/yaps/yaps-swing/.classpath
+/yaps/yaps-swing/.project
+/yaps/yaps-webapp/.classpath
+/yaps/yaps-webapp/.project
+/yaps/yaps-ejb/.project
+/yaps/.project
