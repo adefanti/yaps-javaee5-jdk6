@@ -3,3 +3,8 @@
 *.iws
 target
 /.idea/*
+/yaps/.settings/
+/yaps/yaps-ear/.settings/
+/yaps/yaps-ejb/.settings/
+/yaps/yaps-swing/.settings/
+/yaps/yaps-webapp/.settings/
