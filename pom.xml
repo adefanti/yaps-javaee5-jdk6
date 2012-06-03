@@ -1,83 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.yaps.petstore</groupId>
-    <artifactId>petstore-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+	<groupId>org.yaps.petstore</groupId>
+	<artifactId>petstore-parent</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-    <name>Pet Store parent project</name>
+	<name>Pet Store parent project</name>
 
-    <properties>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
-        <project.build.sourceencoding>UTF-8</project.build.sourceencoding>
-        <!-- maven plugin version -->
-        <maven-ejb-plugin.version>2.3</maven-ejb-plugin.version>
-        <maven-ear-plugin.version>2.7</maven-ear-plugin.version>
-        <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
-        <gwt.plugin.version>2.2.0</gwt.plugin.version>
-        <gwt.version>2.3.0</gwt.version>
-        <ejb.version>3.0</ejb.version>
-        <jpa.version>1.0</jpa.version>
-        <javaee-api.version>5</javaee-api.version>
-        <vaadin.version>6.7.8</vaadin.version>
-        <junit.version>4.10</junit.version>
-    </properties>
+	<properties>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<project.build.sourceencoding>UTF-8</project.build.sourceencoding>
+		<!-- plugins version -->
+		<maven-ejb-plugin.version>2.3</maven-ejb-plugin.version>
+		<maven-ear-plugin.version>2.7</maven-ear-plugin.version>
+		<maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
+		<gwt.plugin.version>2.2.0</gwt.plugin.version>
+		<!-- dependencies version -->
+		<gwt.version>2.3.0</gwt.version>
+		<ejb.version>3.0</ejb.version>
+		<jpa.version>1.0</jpa.version>
+		<javaee-api.version>5</javaee-api.version>
+		<vaadin.version>6.7.9</vaadin.version>
+		<junit.version>4.10</junit.version>
+	</properties>
 
-    <modules>
-        <module>yaps</module>
-    </modules>
+	<modules>
+		<module>yaps</module>
+	</modules>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/adefanti/yaps-javaee5-jdk6/issues</url>
+	</issueManagement>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.vaadin</groupId>
-                <artifactId>vaadin</artifactId>
-                <version>${vaadin.version}</version>
-            </dependency>
-            <!-- replace by javaee-api dependency
+	<!-- GitHub SCM -->
+	<scm>
+		<url>https://github.com/adefanti/yaps-javaee5-jdk6</url>
+		<connection>scm:git:ssh://git@github.com/adefanti/yaps-javaee5-jdk6.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/adefanti/yaps-javaee5-jdk6.git</developerConnection>
+	</scm>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Vaadin -->
 			<dependency>
-				<groupId>javax.ejb</groupId>
-				<artifactId>ejb-api</artifactId>
-				<version>${ejb.version}</version>
-				<scope>provided</scope>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin</artifactId>
+				<version>${vaadin.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>javax.persistence</groupId>
-				<artifactId>persistence-api</artifactId>
-				<version>${jpa.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			-->
+			<!-- replace by javaee-api dependency -->
+            <!--
             <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-                <scope>test</scope>
+                    <groupId>javax.ejb</groupId>
+                    <artifactId>ejb-api</artifactId>
+                    <version>${ejb.version}</version>
+                    <scope>provided</scope>
             </dependency>
-        </dependencies>
-    </dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>javaee</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>${javaee-api.version}</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+            <dependency>
+                    <groupId>javax.persistence</groupId>
+                    <artifactId>persistence-api</artifactId>
+                    <version>${jpa.version}</version>
+                    <scope>provided</scope>
+            </dependency>
+	    	-->
+
+			<!-- dependencies with scope test -->
+			<!-- JUnit -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- JavaEE -->
+		<dependency>
+			<groupId>javaee</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 </project>
