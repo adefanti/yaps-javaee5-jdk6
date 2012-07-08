@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "t_customer")
@@ -22,8 +23,14 @@ public class Customer implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;
+
+	@Version
+	@Column(name = "version")
+	private Integer version;
+	
 	@Column(length = 100, nullable = false)
 	private String firstname;
+
 	@Column(length = 100, nullable = false)
 	private String lastname;
 
@@ -37,6 +44,14 @@ public class Customer implements Serializable {
 
 	public Long getId() {
 		return id;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 	public String getFirstname() {
