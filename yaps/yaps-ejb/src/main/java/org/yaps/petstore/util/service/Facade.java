@@ -12,7 +12,7 @@ public interface Facade<T> {
 	 * Insert new entity on <T> type in database.
 	 * 
 	 * @param entity
-	 *            - entity to creatz
+	 *            - entity to create
 	 * @return created entity
 	 */
 	T create(T entity);
