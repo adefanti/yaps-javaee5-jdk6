@@ -11,7 +11,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import org.hibernate.envers.Audited;
+
 @Entity
+@Audited
 @Table(name = "t_customer")
 @NamedQueries({ @NamedQuery(name = Customer.FIND_ALL, query = "SELECT c FROM Customer c") })
 public class Customer implements Serializable {
