@@ -1,4 +1,4 @@
-package org.yaps.petstore.entity.customer;
+package org.yaps.petstore.domain.model.customer;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
@@ -30,6 +30,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.yaps.petstore.domain.model.customer.Customer;
 
 public class CustomerTest {
 	private static EntityManagerFactory emf;
@@ -40,7 +41,7 @@ public class CustomerTest {
 
 	@BeforeClass
 	public static void initEntityManager() throws Exception {
-		emf = Persistence.createEntityManagerFactory("petstorePU");
+		emf = Persistence.createEntityManagerFactory("petstorePU-junit");
 		entityManager = emf.createEntityManager();
 
 		// Initializes DBUnit
@@ -167,8 +168,7 @@ public class CustomerTest {
 		// then
 		List<Object[]> customerRevisions = getCustomerRevisions(customer);
 		assertThat(customerRevisions).isNotNull().hasSize(2);
-		assertEquals("Wright",
-				((Customer) customerRevisions.get(0)[0]).getLastname());
+		assertThat(((Customer) customerRevisions.get(0)[0]).getLastname()).isEqualTo("Wright");
 	}
 
 	@SuppressWarnings("unchecked")

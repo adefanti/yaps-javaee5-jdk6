@@ -1,4 +1,4 @@
-package org.yaps.petstore.entity.customer;
+package org.yaps.petstore.domain.model.customer;
 
 import java.io.Serializable;
 
