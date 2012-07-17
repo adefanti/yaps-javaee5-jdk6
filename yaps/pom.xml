@@ -16,7 +16,7 @@
 
     <modules>
         <module>yaps-domain</module>
-        <!-- <module>yaps-ejb</module> -->
+        <module>yaps-ejb</module>
         <module>yaps-swing</module>
         <module>yaps-webapp</module>
         <module>yaps-ear</module>
