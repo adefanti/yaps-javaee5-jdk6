@@ -38,6 +38,10 @@
 			<artifactId>ejb-api</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
@@ -55,12 +59,6 @@
 		<dependency>
 			<groupId>org.apache.openejb</groupId>
 			<artifactId>openejb-ejbd</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>hsqldb</artifactId>
-					<groupId>hsqldb</groupId>
-				</exclusion>
-			</exclusions>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
