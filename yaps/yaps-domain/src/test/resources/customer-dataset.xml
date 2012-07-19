@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
 <dataset>
-	<t_customer id='1000' firstname='Richard' lastname='Wright' />
-	<t_customer id='1001' firstname='Roger' lastname='Waters' />
-	<t_customer id='1002' firstname='Nick' lastname='Mason' />
-	<t_customer id='1003' firstname='David' lastname='Gilmour' />
-	<t_customer id='1004' firstname='Syd' lastname='Barrett' />
+	<t_customer id='1000' firstname='Richard' lastname='Wright' version='0'/>
+	<t_customer id='1001' firstname='Roger' lastname='Waters' version='0'/>
+	<t_customer id='1002' firstname='Nick' lastname='Mason' version='0'/>
+	<t_customer id='1003' firstname='David' lastname='Gilmour' version='0'/>
+	<t_customer id='1004' firstname='Syd' lastname='Barrett' version='0'/>
 </dataset>
