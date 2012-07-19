@@ -2,6 +2,7 @@ package org.yaps.petstore.domain.model.customer;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 import org.dbunit.DatabaseUnitException;
@@ -30,7 +32,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.yaps.petstore.domain.model.customer.Customer;
 
 public class CustomerTest {
 	private static EntityManagerFactory emf;
@@ -38,6 +39,8 @@ public class CustomerTest {
 	private static EntityTransaction tx;
 	private static IDatabaseConnection connection;
 	private static IDataSet dataset;
+
+	private static final long CUTOMER_DATASET_ID = 1001;
 
 	@BeforeClass
 	public static void initEntityManager() throws Exception {
@@ -84,7 +87,7 @@ public class CustomerTest {
 	}
 
 	@Test
-	public void createCustomer() throws Exception {
+	public void createCustomerWithValidValues() throws Exception {
 		// given
 		Customer customer = new Customer("Richard", "Wright");
 
@@ -96,6 +99,89 @@ public class CustomerTest {
 		// then
 		assertThat(customer.getId()).overridingErrorMessage(
 				"ID should not be null").isNotNull();
+	}
+
+	@Test
+	public void createCustomerWithInvalidValues() {
+		// given
+		Customer customer = new Customer(null, "Wright");
+		try {
+			// when
+			tx.begin();
+			entityManager.persist(customer);
+			tx.commit();
+			fail("Object with null values should not be created");
+		} catch (Exception e) {
+			// then
+			assertThat(e).isInstanceOf(PersistenceException.class);
+			tx.rollback();
+		}
+	}
+
+	@Test
+	public void updateCustomerWithValidValues() throws Exception {
+		// given
+		// Creates a new object and persists it
+		Customer customer = new Customer("Richard", "Wright");
+		tx.begin();
+		entityManager.persist(customer);
+		tx.commit();
+		// Updates previous object and persists it
+		customer.setLastname("Right");
+
+		// when
+		tx.begin();
+		entityManager.merge(customer);
+		tx.commit();
+
+		// then
+		customer = entityManager.find(Customer.class, customer.getId());
+		assertThat(customer).isNotNull();
+		assertThat(customer.getLastname()).isEqualTo("Right");
+		// check version
+		assertThat(customer.getVersion()).isEqualTo(1);
+		// check audit datas
+		List<Object[]> customerRevisions = getCustomerRevisions(customer);
+		assertThat(customerRevisions).isNotNull().hasSize(2);
+		assertThat(((Customer) customerRevisions.get(0)[0]).getLastname())
+				.isEqualTo("Wright");
+	}
+
+	@Test
+	public void updateCustomerWithInvalidValues() throws Exception {
+		// given
+		// Find customer with id number 1001, updates and persists it
+		Customer customer = entityManager.find(Customer.class,
+				CUTOMER_DATASET_ID);
+		customer.setLastname(null);
+
+		try {
+			// when
+			tx.begin();
+			entityManager.merge(customer);
+			tx.commit();
+			fail("Object with null values should not be updated");
+		} catch (Exception e) {
+			// then
+			assertThat(e).isInstanceOf(PersistenceException.class);
+			assertThat(tx.isActive()).isFalse();
+			// rollback update
+			tx.begin();
+			tx.rollback();
+		}
+	}
+	
+	@Test
+	public void find() throws Exception {
+		// when
+		Customer customer = entityManager.find(Customer.class,
+				CUTOMER_DATASET_ID);
+
+		// then
+		assertThat(customer).isNotNull();
+		assertThat(customer.getFirstname()).isEqualTo("Roger");
+		assertThat(customer.getLastname()).isEqualTo("Waters");
+		assertThat(customer.getVersion()).isEqualTo(0);
 	}
 
 	@Test
@@ -126,49 +212,6 @@ public class CustomerTest {
 		// then
 		assertThat(allCustomers).overridingErrorMessage(
 				"Should have 5 customers").hasSize(5);
-	}
-
-	@Test
-	public void testVersion() {
-		// given
-		// Creates a new object and persists it
-		Customer customer = new Customer("Richard", "Wright");
-		tx.begin();
-		entityManager.persist(customer);
-		tx.commit();
-		// Updates previous object and persists it
-		customer.setLastname("Right");
-
-		// when
-		tx.begin();
-		entityManager.merge(customer);
-		tx.commit();
-
-		// then
-		assertThat(customer.getVersion()).isEqualTo(1);
-	}
-
-	@Test
-	public void testAudit() {
-		// given
-		// Creates a new object and persists it
-		Customer customer = new Customer("Richard", "Wright");
-		tx.begin();
-		entityManager.persist(customer);
-		tx.commit();
-
-		// Updates previous object and persists it
-		customer.setLastname("Right");
-
-		// when
-		tx.begin();
-		entityManager.merge(customer);
-		tx.commit();
-
-		// then
-		List<Object[]> customerRevisions = getCustomerRevisions(customer);
-		assertThat(customerRevisions).isNotNull().hasSize(2);
-		assertThat(((Customer) customerRevisions.get(0)[0]).getLastname()).isEqualTo("Wright");
 	}
 
 	@SuppressWarnings("unchecked")
