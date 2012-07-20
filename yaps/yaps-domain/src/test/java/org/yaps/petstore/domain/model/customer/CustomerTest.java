@@ -1,8 +1,7 @@
 package org.yaps.petstore.domain.model.customer;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.fest.assertions.Fail.fail;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -189,7 +188,7 @@ public class CustomerTest {
 
 		// Gets all the objects from the database
 		Query query = entityManager.createNamedQuery(Customer.FIND_ALL);
-		assertEquals("Should have 5 customers", query.getResultList().size(), 5);
+		assertThat(query.getResultList()).overridingErrorMessage("Should have 5 customers").hasSize(5);
 
 		// Creates a new object and persists it
 		Customer customer = new Customer("Richard", "Wright");
@@ -198,7 +197,7 @@ public class CustomerTest {
 		tx.commit();
 
 		// Gets all the objects from the database
-		assertEquals("Should have 6 customers", query.getResultList().size(), 6);
+		assertThat(query.getResultList()).overridingErrorMessage("Should have 6 customers").hasSize(6);
 
 		// Removes the object from the database
 		tx.begin();
