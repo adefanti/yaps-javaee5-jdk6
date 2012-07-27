@@ -1,5 +1,8 @@
 package org.yaps.petstore.service.common;
 
+import java.util.List;
+
+
 /**
  * Class defines base service functions.
  * 
@@ -42,4 +45,6 @@ public interface Facade<T> {
 	 * @return found entity
 	 */
 	T find(Object id);
+	
+	List<T> findByNamedQuery(String queryName);
 }

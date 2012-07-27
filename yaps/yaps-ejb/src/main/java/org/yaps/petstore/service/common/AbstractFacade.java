@@ -1,5 +1,6 @@
 package org.yaps.petstore.service.common;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 
 /**
@@ -77,5 +78,11 @@ public abstract class AbstractFacade<T> implements Facade<T> {
 	@Override
 	public T find(Object id) {
 		return getEntityManager().find(entityClass, id);
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<T> findByNamedQuery(String queryName) {
+		return getEntityManager().createNamedQuery(queryName).getResultList();
 	}
 }
