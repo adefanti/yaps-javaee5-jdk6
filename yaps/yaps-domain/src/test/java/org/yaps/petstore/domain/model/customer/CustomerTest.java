@@ -21,7 +21,6 @@ import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.ext.hsqldb.HsqldbConnection;
 import org.dbunit.operation.DatabaseOperation;
 import org.hibernate.Session;
-import org.hibernate.ejb.EntityManagerImpl;
 import org.hibernate.envers.AuditReader;
 import org.hibernate.envers.AuditReaderFactory;
 import org.hibernate.envers.query.AuditEntity;
@@ -47,7 +46,7 @@ public class CustomerTest {
 		entityManager = emf.createEntityManager();
 
 		// Initializes DBUnit
-		Session session = ((EntityManagerImpl) entityManager).getSession();
+		Session session = (Session) entityManager.getDelegate();
 		session.doWork(new Work() {
 			@Override
 			public void execute(Connection hibernateConnection)
