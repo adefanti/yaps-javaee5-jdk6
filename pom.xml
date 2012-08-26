@@ -26,6 +26,7 @@
 		<maven-project-info-reports-plugin.version>2.4</maven-project-info-reports-plugin.version>
 		<maven-site-plugin.version>3.1</maven-site-plugin.version>
 		<!-- dependencies version -->
+		<commons-lang.version>2.6</commons-lang.version>
 		<dbunit.version>2.4.8</dbunit.version>
 		<ejb.version>3.0</ejb.version>
 		<fest-assert.version>1.4</fest-assert.version>
@@ -115,6 +116,13 @@
 				<groupId>com.vaadin</groupId>
 				<artifactId>vaadin</artifactId>
 				<version>${vaadin.version}</version>
+			</dependency>
+
+			<!-- commons -->
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang.version}</version>
 			</dependency>
 
 			<!-- JavaEE -->
