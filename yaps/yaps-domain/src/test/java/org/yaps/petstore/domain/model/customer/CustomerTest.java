@@ -168,7 +168,7 @@ public class CustomerTest {
 			tx.rollback();
 		}
 	}
-	
+
 	@Test
 	public void find() throws Exception {
 		// when
@@ -187,7 +187,8 @@ public class CustomerTest {
 
 		// Gets all the objects from the database
 		Query query = entityManager.createNamedQuery(Customer.FIND_ALL);
-		assertThat(query.getResultList()).overridingErrorMessage("Should have 5 customers").hasSize(5);
+		assertThat(query.getResultList()).overridingErrorMessage(
+				"Should have 5 customers").hasSize(5);
 
 		// Creates a new object and persists it
 		Customer customer = new Customer("Richard", "Wright");
@@ -196,7 +197,8 @@ public class CustomerTest {
 		tx.commit();
 
 		// Gets all the objects from the database
-		assertThat(query.getResultList()).overridingErrorMessage("Should have 6 customers").hasSize(6);
+		assertThat(query.getResultList()).overridingErrorMessage(
+				"Should have 6 customers").hasSize(6);
 
 		// Removes the object from the database
 		tx.begin();

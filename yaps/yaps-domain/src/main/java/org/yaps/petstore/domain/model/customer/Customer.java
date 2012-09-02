@@ -30,7 +30,7 @@ public class Customer implements Serializable {
 	@Version
 	@Column(name = "version")
 	private Integer version;
-	
+
 	@Column(length = 100, nullable = false)
 	private String firstname;
 
