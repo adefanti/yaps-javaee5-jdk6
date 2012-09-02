@@ -79,7 +79,7 @@ public abstract class AbstractFacade<T> implements Facade<T> {
 	public T find(Object id) {
 		return getEntityManager().find(entityClass, id);
 	}
-	
+
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<T> findByNamedQuery(String queryName) {

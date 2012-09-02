@@ -14,22 +14,28 @@ import org.yaps.petstore.service.facade.customer.CustomerFacade;
 
 public class CustomerFacadeBeanTest {
 
-	/** Class to test */
+	/**
+	 * Class to test
+	 */
 	private static CustomerFacade service;
 
 	/**
-	 * initialize Session Ejb 
+	 * initialize Session Ejb
+	 * 
 	 * @throws Exception
 	 */
 	@BeforeClass
 	public static void setUpClass() throws Exception {
 		Properties properties = new Properties();
-		properties.setProperty(Context.INITIAL_CONTEXT_FACTORY, "org.apache.openejb.client.LocalInitialContextFactory");
-		properties.setProperty("openejb.jndiname.format", "{ejbName}/{interfaceType.annotationName}");
+		properties.setProperty(Context.INITIAL_CONTEXT_FACTORY,
+				"org.apache.openejb.client.LocalInitialContextFactory");
+		properties.setProperty("openejb.jndiname.format",
+				"{ejbName}/{interfaceType.annotationName}");
 
 		InitialContext initialContext = new InitialContext(properties);
 
-		service = (CustomerFacade) initialContext.lookup("CustomerFacadeBean/Local");
+		service = (CustomerFacade) initialContext
+				.lookup("CustomerFacadeBean/Local");
 	}
 
 	/**
@@ -39,16 +45,16 @@ public class CustomerFacadeBeanTest {
 	public void testCreateNewCustomer() {
 		// given
 		Customer customer = new Customer("Richard", "Wright");
-		
+
 		// when
 		service.create(customer);
-		
+
 		// then
 		assertThat(customer).isNotNull();
 		assertThat(customer.getId()).isNotNull().isGreaterThan(0);
 		assertThat(customer.getFirstname()).isEqualTo("Richard");
 	}
-	
+
 	/**
 	 * Test find method
 	 */
@@ -57,16 +63,17 @@ public class CustomerFacadeBeanTest {
 		// given
 		Customer customer = new Customer("Richard", "Wright");
 		service.create(customer);
-		
+
 		// when
 		Customer foundCustomer = service.find(customer.getId());
-		
+
 		// then
 		assertThat(foundCustomer).isNotNull();
-		assertThat(foundCustomer.getId()).isNotNull().isEqualTo(customer.getId());
+		assertThat(foundCustomer.getId()).isNotNull().isEqualTo(
+				customer.getId());
 		assertThat(foundCustomer.getFirstname()).isEqualTo("Richard");
 	}
-	
+
 	/**
 	 * Test update method
 	 */
@@ -75,14 +82,15 @@ public class CustomerFacadeBeanTest {
 		// given
 		Customer customer = new Customer("Gillian", "Manson");
 		service.create(customer);
-		
+
 		// when
 		customer.setFirstname("Jude");
 		Customer updatedCustomer = service.update(customer);
-		
+
 		// then
 		assertThat(updatedCustomer).isNotNull();
-		assertThat(updatedCustomer.getId()).isNotNull().isEqualTo(customer.getId());
+		assertThat(updatedCustomer.getId()).isNotNull().isEqualTo(
+				customer.getId());
 		assertThat(updatedCustomer.getFirstname()).isEqualTo("Jude");
 		assertThat(updatedCustomer.getVersion()).isEqualTo(1);
 	}
