@@ -19,10 +19,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-ejb-plugin</artifactId>
-				<version>${maven-ejb-plugin.version}</version>
-				<configuration>
-					<ejbVersion>${ejb.version}</ejbVersion>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -31,7 +27,6 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>yaps-domain</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.ejb</groupId>
