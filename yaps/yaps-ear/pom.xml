@@ -24,13 +24,11 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>yaps-ejb</artifactId>
             <type>ejb</type>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>yaps-webapp</artifactId>
             <type>war</type>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
@@ -39,7 +37,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ear-plugin</artifactId>
-                <version>${maven-ear-plugin.version}</version>
                 <configuration>
                     <modules>
                         <ejbModule>
