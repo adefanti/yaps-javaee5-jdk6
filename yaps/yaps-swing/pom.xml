@@ -14,7 +14,6 @@
 
     <name>Yaps Pet Store swing client</name>
 
-
     <build>
         <plugins>
             <plugin>
@@ -33,9 +32,18 @@
 
     <dependencies>
         <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>yaps-ejb</artifactId>
-            <version>${project.version}</version>
+            <type>ejb-client</type>
+            <classifier>client</classifier>
+        </dependency>
+        <dependency>
+            <groupId>javax.ejb</groupId>
+            <artifactId>ejb-api</artifactId>
         </dependency>
     </dependencies>
 
