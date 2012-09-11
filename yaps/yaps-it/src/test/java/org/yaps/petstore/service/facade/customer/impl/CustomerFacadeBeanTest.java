@@ -1,11 +1,10 @@
-package org.yaps.petstore.service.customer;
-
-import static org.fest.assertions.Assertions.assertThat;
+package org.yaps.petstore.service.facade.customer.impl;
 
 import java.util.Properties;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
