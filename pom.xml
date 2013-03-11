@@ -17,32 +17,32 @@
 		<!-- plugins version -->
 		<findbugs-maven-plugin.version>2.5.2</findbugs-maven-plugin.version>
 		<gwt.plugin.version>2.2.0</gwt.plugin.version>
-		<maven-compiler-plugin.version>2.5.1</maven-compiler-plugin.version>
-		<maven-ear-plugin.version>2.7</maven-ear-plugin.version>
+		<maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
+		<maven-ear-plugin.version>2.8</maven-ear-plugin.version>
 		<maven-ejb-plugin.version>2.3</maven-ejb-plugin.version>
-		<maven-javadoc-plugin.version>2.8.1</maven-javadoc-plugin.version>
+		<maven-javadoc-plugin.version>2.9</maven-javadoc-plugin.version>
 		<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
 		<maven-pmd-plugin.version>2.7.1</maven-pmd-plugin.version>
 		<maven-project-info-reports-plugin.version>2.5</maven-project-info-reports-plugin.version>
-		<maven-site-plugin.version>3.1</maven-site-plugin.version>
+		<maven-site-plugin.version>3.2</maven-site-plugin.version>
 		<maven-war-plugin.version>2.2</maven-war-plugin.version>
 		<!-- dependencies version -->
-		<commons-lang.version>2.6</commons-lang.version>
-		<dbunit.version>2.4.8</dbunit.version>
+		<commons-lang3.version>3.1</commons-lang3.version>
+		<dbunit.version>2.4.9</dbunit.version>
 		<ejb.version>3.0</ejb.version>
 		<fest-assert.version>1.4</fest-assert.version>
-		<gwt.version>2.3.0</gwt.version>
+		<gwt.version>2.5.0</gwt.version>
 		<hibernate.version>3.3.1.GA</hibernate.version>
 		<hibernate-annotations.version>3.4.0.GA</hibernate-annotations.version>
 		<hibernate-entitymanager.version>3.4.0.GA</hibernate-entitymanager.version>
-		<hsqldb.version>2.2.8</hsqldb.version>
+		<hsqldb.version>2.2.9</hsqldb.version>
 		<javaee-api.version>5</javaee-api.version>
 		<jboss-envers.version>1.2.2.GA-hibernate-3.3</jboss-envers.version>
 		<jpa.version>1.0</jpa.version>
-		<junit.version>4.10</junit.version>
+		<junit.version>4.11</junit.version>
 		<openejb-ejbd.version>3.1.4</openejb-ejbd.version>
-		<slf4j.version>1.6.6</slf4j.version>
-		<vaadin.version>6.8.2</vaadin.version>
+		<slf4j.version>1.7.2</slf4j.version>
+		<vaadin.version>6.8.7</vaadin.version>
 	</properties>
 
 	<modules>
@@ -135,9 +135,9 @@
 
 			<!-- commons -->
 			<dependency>
-				<groupId>commons-lang</groupId>
-				<artifactId>commons-lang</artifactId>
-				<version>${commons-lang.version}</version>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
 			</dependency>
 
 			<!-- JavaEE -->
