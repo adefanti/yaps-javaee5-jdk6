@@ -38,7 +38,7 @@
 		<ejb.version>3.0</ejb.version>
 		<fest-assert.version>1.4</fest-assert.version>
 		<gwt.version>2.5.0</gwt.version>
-		<hibernate.version>3.3.1.GA</hibernate.version>
+		<hibernate.version>3.3.2.GA</hibernate.version>
 		<hibernate-annotations.version>3.4.0.GA</hibernate-annotations.version>
 		<hibernate-entitymanager.version>3.4.0.GA</hibernate-entitymanager.version>
 		<hsqldb.version>2.2.9</hsqldb.version>
@@ -321,4 +321,12 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>sonatype_nexus</id>
+            <name>this repo contains jboss-envers</name>
+            <url>https://maven-us.nuxeo.org/nexus/content/repositories/public</url>
+        </repository>
+    </repositories>
 </project>
